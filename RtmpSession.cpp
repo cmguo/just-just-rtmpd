@@ -78,7 +78,7 @@ namespace ppbox
             boost::system::error_code ec;
 
             RtmpCommandMessage & req(
-                request().type == RtmpMessageType::RCMT_CommandMessage0 
+                request().type == RCMT_CommandMessage0 
                     ? (RtmpCommandMessage &)request().as<RtmpCommandMessage0>()
                     : (RtmpCommandMessage &)request().as<RtmpCommandMessage3>());
             std::string const & cmd = req.CommandName.as<RtmpAmfString>().StringData;
