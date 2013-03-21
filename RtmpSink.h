@@ -27,7 +27,9 @@ namespace ppbox
                 ppbox::avformat::Sample const & sample, 
                 boost::system::error_code & ec)
             {
-                return socket_.write_raw_msg(sample.data, ec);
+                util::protocol::RtmpMessageHeaderEx const & msg_header_ = 
+                    *(util::protocol::RtmpMessageHeaderEx const *)sample.context;
+                return socket_.write_raw_msg(msg_header_, sample.data, ec);
             }
 
         private:
