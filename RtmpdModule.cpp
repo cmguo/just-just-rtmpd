@@ -2,6 +2,9 @@
 
 #include "ppbox/rtmpd/Common.h"
 #include "ppbox/rtmpd/RtmpdModule.h"
+#define PPBOX_ENABLE_REGISTER_CLASS
+#include "ppbox/rtmpd/RtmMuxer.h"
+#include "ppbox/rtmpd/RtmpPublishSink.h"
 #include "ppbox/rtmpd/RtmpDispatcher.h"
 #include "ppbox/rtmpd/RtmpSession.h"
 

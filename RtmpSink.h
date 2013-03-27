@@ -3,9 +3,10 @@
 #ifndef _PPBOX_RTMPD_RTMP_SINK_H_
 #define _PPBOX_RTMPD_RTMP_SINK_H_
 
-#include <ppbox/dispatch/Sink.h>
+#include <util/stream/Sink.h>
 
 #include <util/protocol/rtmp/RtmpSocket.hpp>
+#include <util/protocol/rtmp/RtmpMessageDataData.h>
 
 namespace ppbox
 {
@@ -13,23 +14,25 @@ namespace ppbox
     {
 
         class RtmpSink
-            : public ppbox::dispatch::Sink
+            : public util::stream::Sink
         {
         public:
             RtmpSink(
                 util::protocol::RtmpSocket & socket)
-                : socket_(socket)
+                : util::stream::Sink(socket.get_io_service())
+                , socket_(socket)
             {
             }
 
         public:
-            virtual size_t write(
-                ppbox::avformat::Sample const & sample, 
+            virtual std::size_t private_write_some(
+                buffers_t const & buffers,
                 boost::system::error_code & ec)
             {
-                util::protocol::RtmpMessageHeaderEx const & msg_header_ = 
-                    *(util::protocol::RtmpMessageHeaderEx const *)sample.context;
-                return socket_.write_raw_msg(msg_header_, sample.data, ec);
+                util::protocol::RtmpMessageHeaderEx const & header = 
+                    *boost::asio::buffer_cast<util::protocol::RtmpMessageHeaderEx const *>(*buffers.begin());
+                size_t n = socket_.write_raw_msg(header, util::buffers::sub_buffers(buffers, sizeof(header)), ec);
+                return n ? n + sizeof(header) : 0;
             }
 
         private:
