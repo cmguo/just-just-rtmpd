@@ -4,7 +4,6 @@
 #define _PPBOX_RTMPD_RTMP_DISPATCHER_H_
 
 #include <ppbox/dispatch/CustomDispatcher.h>
-#include <ppbox/dispatch/Sink.h>
 
 namespace util
 {
@@ -56,7 +55,7 @@ namespace ppbox
 
         private:
             ppbox::data::MediaInfo media_info_;
-            ppbox::dispatch::WrapSink * sink_;
+            util::stream::Sink * sink_;
         };
 
     } // namespace rtmpd

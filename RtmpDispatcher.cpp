@@ -52,7 +52,6 @@ namespace ppbox
         bool RtmpDispatcher::teardown(
             boost::system::error_code & ec)
         {
-            delete &sink_->sink();
             delete sink_;
             sink_ = NULL;
             ec.clear();
@@ -66,8 +65,7 @@ namespace ppbox
             boost::system::error_code ec)
         {
             if (!ec) {
-                util::stream::Sink * sink = new RtmpSink(socket);
-                sink_ = new ppbox::dispatch::WrapSink(*sink);
+                sink_ = new RtmpSink(socket);
                 if (CustomDispatcher::setup(-1, *sink_, ec)) {
                     ppbox::dispatch::SeekRange range;
                     CustomDispatcher::async_play(range, seek_resp, resp);
