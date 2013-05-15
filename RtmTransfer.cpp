@@ -4,9 +4,11 @@
 #include "ppbox/rtmpd/RtmTransfer.h"
 
 #include <ppbox/avformat/flv/FlvTagType.h>
-#include <ppbox/avformat/stream/SampleBuffers.h>
-#include <ppbox/avformat/stream/FormatBuffer.h>
 using namespace ppbox::avformat;
+
+#include <ppbox/avbase/stream/SampleBuffers.h>
+#include <ppbox/avbase/stream/FormatBuffer.h>
+using namespace ppbox::avbase;
 
 #include <util/protocol/rtmp/RtmpMessageTraits.h>
 

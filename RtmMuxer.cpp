@@ -8,7 +8,6 @@
 using namespace ppbox::mux;
 
 #include <ppbox/avformat/flv/FlvDataType.h>
-#include <ppbox/avformat/stream/FormatBuffer.h>
 using namespace ppbox::avformat;
 
 namespace ppbox
