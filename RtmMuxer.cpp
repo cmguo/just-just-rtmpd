@@ -4,7 +4,7 @@
 #include "ppbox/rtmpd/RtmMuxer.h"
 #include "ppbox/rtmpd/RtmTransfer.h"
 
-#include <ppbox/mux/transfer/MergeTransfer.h>
+#include <ppbox/mux/filter/MergeFilter.h>
 using namespace ppbox::mux;
 
 #include <ppbox/avformat/flv/FlvDataType.h>
@@ -18,6 +18,7 @@ namespace ppbox
         RtmMuxer::RtmMuxer()
             : rtm_transfer_(NULL)
         {
+            format("flv");
         }
 
         RtmMuxer::~RtmMuxer()
@@ -30,14 +31,13 @@ namespace ppbox
 
         void RtmMuxer::add_stream(
             StreamInfo & info, 
-            std::vector<Transfer *> & transfers)
+            FilterPipe & pipe)
         {
-            FlvMuxer::add_stream(info, transfers);
+            FlvMuxer::add_stream(info, pipe);
             if (rtm_transfer_ == NULL) {
                 rtm_transfer_ = new RtmTransfer;
             }
-            Transfer * transfer = new MergeTransfer(rtm_transfer_);
-            transfers.push_back(transfer);
+            pipe.push_back(new MergeFilter(rtm_transfer_));
         }
 
         void RtmMuxer::file_header(

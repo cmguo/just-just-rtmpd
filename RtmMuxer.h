@@ -23,7 +23,7 @@ namespace ppbox
         private:
             virtual void add_stream(
                 ppbox::mux::StreamInfo & info, 
-                std::vector<ppbox::mux::Transfer *> & transfers);
+                ppbox::mux::FilterPipe & pipe);
 
             virtual void file_header(
                 ppbox::mux::Sample & sample);
