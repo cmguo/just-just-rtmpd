@@ -23,10 +23,6 @@ namespace ppbox
 
         RtmMuxer::~RtmMuxer()
         {
-            if (rtm_transfer_) {
-                delete rtm_transfer_;
-                rtm_transfer_ = NULL;
-            }
         }
 
         void RtmMuxer::add_stream(
@@ -37,7 +33,7 @@ namespace ppbox
             if (rtm_transfer_ == NULL) {
                 rtm_transfer_ = new RtmTransfer;
             }
-            pipe.push_back(new MergeFilter(rtm_transfer_));
+            pipe.insert(new MergeFilter(rtm_transfer_));
         }
 
         void RtmMuxer::file_header(
