@@ -19,6 +19,8 @@ namespace ppbox
             : rtm_transfer_(NULL)
         {
             format("flv");
+            config().register_module("RtmMuxer")
+                << CONFIG_PARAM_NAME_NOACC("target", target_);
         }
 
         RtmMuxer::~RtmMuxer()
@@ -57,8 +59,20 @@ namespace ppbox
             //util::buffers::buffers_copy(buf.prepare(size);
 
             FlvMuxer::file_header(sample);
-            sample.data.pop_front(); // delete FlvHeader
+            // delete FlvHeader
+            sample.data.pop_front();
             sample.size -= 9 + 4;
+            // add "@setDataFrame"
+            if (target_ == "fms") {
+                FlvDataValue setDataFrame = "@setDataFrame";
+                FormatBuffer buf(header_buffer_, sizeof(header_buffer_));
+                FlvOArchive oa(buf);
+                oa << setDataFrame;
+                sample.data.insert(sample.data.begin() + 1, buf.data());
+                sample.size += buf.size();
+                FlvTagHeader * tag_header = (FlvTagHeader *)sample.context;
+                tag_header->DataSize = tag_header->DataSize + buf.size();
+            }
             rtm_transfer_->transfer(sample);
         }
 
