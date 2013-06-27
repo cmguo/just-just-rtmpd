@@ -20,7 +20,7 @@ namespace ppbox
         {
             format("flv");
             config().register_module("RtmMuxer")
-                << CONFIG_PARAM_NAME_NOACC("target", target_);
+                << CONFIG_PARAM_NAME_RDWR("target", target_);
         }
 
         RtmMuxer::~RtmMuxer()
