@@ -33,7 +33,7 @@ namespace ppbox
                 ppbox::mux::Sample & sample);
 
         private:
-            std::string peer_;
+            std::string target_;
             boost::uint8_t header_buffer_[48];
             RtmTransfer * rtm_transfer_;
         };
