@@ -53,7 +53,7 @@ namespace ppbox
         void RtmpdModule::free_dispatcher(
             RtmpDispatcher * dispatcher)
         {
-            dispatch_module_.free_dispatcher(&dispatcher->get_dispatcher());
+            dispatch_module_.free_dispatcher(dispatcher->detach());
             delete dispatcher;
         }
 

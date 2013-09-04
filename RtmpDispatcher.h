@@ -40,12 +40,6 @@ namespace ppbox
             bool teardown(
                 boost::system::error_code & ec);
 
-        public:
-            ppbox::dispatch::DispatcherBase & get_dispatcher()
-            {
-                return dispatcher_;
-            }
-
         private:
             void handle_open(
                 util::protocol::RtmpSocket & socket, 
