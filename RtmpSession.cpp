@@ -120,7 +120,7 @@ namespace ppbox
                 RtmpCommandMessage & result = resp.get<RtmpCommandMessage0>();
                 result.CommandName = "_result";
                 result.TransactionID = req.TransactionID;
-                result.CommandObject.reset(RtmpAmfType::_NULL); 
+                result.CommandObject.reset(RtmpAmfType::NULL_); 
                 result.OptionalArguments.push_back(1);
                 response().push_back(resp);
             } else if (cmd == "play") {
@@ -139,7 +139,7 @@ namespace ppbox
                 RtmpCommandMessage & result = resp.get<RtmpCommandMessage0>();
                 result.CommandName = "onStatus";
                 result.TransactionID = req.TransactionID;
-                result.CommandObject.reset(RtmpAmfType::_NULL); 
+                result.CommandObject.reset(RtmpAmfType::NULL_); 
                 result.OptionalArguments.push_back(RtmpAmfValue());
                 RtmpAmfObject & obj = result.OptionalArguments.back().get<RtmpAmfObject>();
                 obj.ObjectProperties.push_back(RtmpAmfObjectProperty("level", "status"));
