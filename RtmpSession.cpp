@@ -87,7 +87,14 @@ namespace ppbox
             LOG_DEBUG("[local_process] session_id:" << session_id_ << " request:" << cmd);
 
             if (cmd == "connect") {
-                path_ = req.CommandObject.as<RtmpAmfObject>()["tcUrl"].as<RtmpAmfString>().StringData;
+                if (req.CommandObject.as<RtmpAmfObject>()["tcUrl"].is<RtmpAmfString>()) {
+                    path_ = req.CommandObject.as<RtmpAmfObject>()["tcUrl"].as<RtmpAmfString>().StringData;
+                } else {
+                    std::ostringstream oss;
+                    oss << "rtmp://" << local_endpoint() << "/";
+                    oss << req.CommandObject.as<RtmpAmfObject>()["app"].as<RtmpAmfString>().StringData;
+                    path_ = oss.str();
+                }
                 path_ += "/";
 
                 RtmpMessage resp;
