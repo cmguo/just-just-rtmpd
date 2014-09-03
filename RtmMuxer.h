@@ -16,7 +16,8 @@ namespace ppbox
             : public ppbox::mux::FlvMuxer
         {
         public:
-            RtmMuxer();
+            RtmMuxer(
+                boost::asio::io_service & io_svc);
 
             ~RtmMuxer();
 

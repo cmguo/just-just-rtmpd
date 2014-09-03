@@ -15,8 +15,10 @@ namespace ppbox
     namespace rtmpd
     {
 
-        RtmMuxer::RtmMuxer()
-            : rtm_transfer_(NULL)
+        RtmMuxer::RtmMuxer(
+            boost::asio::io_service & io_svc)
+            : FlvMuxer(io_svc)
+            , rtm_transfer_(NULL)
         {
             format("flv");
             config().register_module("RtmMuxer")
