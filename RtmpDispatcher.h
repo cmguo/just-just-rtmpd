@@ -48,7 +48,7 @@ namespace ppbox
                 boost::system::error_code ec);
 
         private:
-            ppbox::data::MediaInfo media_info_;
+            ppbox::avbase::MediaInfo media_info_;
             util::stream::Sink * sink_;
         };
 
