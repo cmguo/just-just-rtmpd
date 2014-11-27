@@ -1,16 +1,16 @@
 // RtmMuxer.cpp
 
-#include "ppbox/rtmpd/Common.h"
-#include "ppbox/rtmpd/RtmMuxer.h"
-#include "ppbox/rtmpd/RtmTransfer.h"
+#include "just/rtmpd/Common.h"
+#include "just/rtmpd/RtmMuxer.h"
+#include "just/rtmpd/RtmTransfer.h"
 
-#include <ppbox/mux/filter/MergeFilter.h>
-using namespace ppbox::mux;
+#include <just/mux/filter/MergeFilter.h>
+using namespace just::mux;
 
-#include <ppbox/avformat/flv/FlvDataType.h>
-using namespace ppbox::avformat;
+#include <just/avformat/flv/FlvDataType.h>
+using namespace just::avformat;
 
-namespace ppbox
+namespace just
 {
     namespace rtmpd
     {
@@ -87,4 +87,4 @@ namespace ppbox
         }
 
     } // namespace rtmpd
-} // namespace ppbox
+} // namespace just

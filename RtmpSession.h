@@ -1,13 +1,13 @@
 // RtmpSession.h
 
-#ifndef _PPBOX_RTMPD_RTMP_SESSION_H_
-#define _PPBOX_RTMPD_RTMP_SESSION_H_
+#ifndef _JUST_RTMPD_RTMP_SESSION_H_
+#define _JUST_RTMPD_RTMP_SESSION_H_
 
 #include <util/protocol/rtmp/RtmpServer.h>
 
 #include <boost/shared_ptr.hpp>
 
-namespace ppbox
+namespace just
 {
     namespace rtmpd
     {
@@ -53,6 +53,6 @@ namespace ppbox
         };
 
     } // namespace rtmpd
-} // namespace ppbox
+} // namespace just
 
-#endif // _PPBOX_RTMPD_RTMP_SESSION_H_
+#endif // _JUST_RTMPD_RTMP_SESSION_H_

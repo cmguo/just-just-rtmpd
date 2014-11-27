@@ -1,9 +1,9 @@
 // RtmpSession.cpp
 
-#include "ppbox/rtmpd/Common.h"
-#include "ppbox/rtmpd/RtmpSession.h"
-#include "ppbox/rtmpd/RtmpDispatcher.h"
-#include "ppbox/rtmpd/RtmpdModule.h"
+#include "just/rtmpd/Common.h"
+#include "just/rtmpd/RtmpSession.h"
+#include "just/rtmpd/RtmpDispatcher.h"
+#include "just/rtmpd/RtmpdModule.h"
 
 #include <util/protocol/rtmp/RtmpMessage.hpp>
 #include <util/protocol/rtmp/RtmpMessageDataCommand.h>
@@ -17,9 +17,9 @@ using namespace framework::string;
 
 using namespace boost::system;
 
-FRAMEWORK_LOGGER_DECLARE_MODULE_LEVEL("ppbox.rtmpd.RtmpSession", framework::logger::Debug)
+FRAMEWORK_LOGGER_DECLARE_MODULE_LEVEL("just.rtmpd.RtmpSession", framework::logger::Debug)
 
-namespace ppbox
+namespace just
 {
     namespace rtmpd
     {
@@ -289,4 +289,4 @@ namespace ppbox
         }
 
     } // namespace rtmpd
-} // namespace ppbox
+} // namespace just

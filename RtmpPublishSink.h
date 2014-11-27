@@ -1,13 +1,13 @@
 // RtmpPublishSink.h
 
-#ifndef _PPBOX_RTMPD_RTMP_PUBLISH_SINK_H_
-#define _PPBOX_RTMPD_RTMP_PUBLISH_SINK_H_
+#ifndef _JUST_RTMPD_RTMP_PUBLISH_SINK_H_
+#define _JUST_RTMPD_RTMP_PUBLISH_SINK_H_
 
 #include <util/stream/UrlSink.h>
 
 #include <util/protocol/rtmp/RtmpClient.h>
 
-namespace ppbox
+namespace just
 {
     namespace rtmpd
     {
@@ -97,6 +97,6 @@ namespace ppbox
         UTIL_REGISTER_URL_SINK("rtmp", RtmpPublishSink);
 
     } // namespace rtmpd
-} // namespace ppbox
+} // namespace just
 
-#endif // _PPBOX_RTMPD_RTMP_SINK_H_
+#endif // _JUST_RTMPD_RTMP_SINK_H_

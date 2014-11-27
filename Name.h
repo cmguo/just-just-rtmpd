@@ -1,9 +1,9 @@
 // Name.h
 
-#ifndef _PPBOX_RTMPD_NAME_H_
-#define _PPBOX_RTMPD_NAME_H_
+#ifndef _JUST_RTMPD_NAME_H_
+#define _JUST_RTMPD_NAME_H_
 
-#include "ppbox/rtmpd/Define.h"
+#include "just/rtmpd/Define.h"
 
 #include <framework/system/AutoName.h>
 

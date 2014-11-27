@@ -1,11 +1,11 @@
 // RtmMuxer.h
 
-#ifndef _PPBOX_MUX_RTM_RTM_MUXER_H_
-#define _PPBOX_MUX_RTM_RTM_MUXER_H_
+#ifndef _JUST_MUX_RTM_RTM_MUXER_H_
+#define _JUST_MUX_RTM_RTM_MUXER_H_
 
-#include "ppbox/mux/flv/FlvMuxer.h"
+#include "just/mux/flv/FlvMuxer.h"
 
-namespace ppbox
+namespace just
 {
     namespace rtmpd
     {
@@ -13,7 +13,7 @@ namespace ppbox
         class RtmTransfer;
 
         class RtmMuxer
-            : public ppbox::mux::FlvMuxer
+            : public just::mux::FlvMuxer
         {
         public:
             RtmMuxer(
@@ -23,15 +23,15 @@ namespace ppbox
 
         private:
             virtual void add_stream(
-                ppbox::mux::StreamInfo & info, 
-                ppbox::mux::FilterPipe & pipe);
+                just::mux::StreamInfo & info, 
+                just::mux::FilterPipe & pipe);
 
             virtual void file_header(
-                ppbox::mux::Sample & sample);
+                just::mux::Sample & sample);
 
             virtual void stream_header(
                 boost::uint32_t index, 
-                ppbox::mux::Sample & sample);
+                just::mux::Sample & sample);
 
         private:
             std::string target_;
@@ -39,9 +39,9 @@ namespace ppbox
             RtmTransfer * rtm_transfer_;
         };
 
-        PPBOX_REGISTER_MUXER("rtm", RtmMuxer);
+        JUST_REGISTER_MUXER("rtm", RtmMuxer);
 
     } // namespace rtmpd
-} // namespace ppbox
+} // namespace just
 
-#endif // _PPBOX_MUX_RTM_RTM_MUXER_H_
+#endif // _JUST_MUX_RTM_RTM_MUXER_H_

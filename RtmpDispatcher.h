@@ -1,9 +1,9 @@
 // RtpDispatcher.h
 
-#ifndef _PPBOX_RTMPD_RTMP_DISPATCHER_H_
-#define _PPBOX_RTMPD_RTMP_DISPATCHER_H_
+#ifndef _JUST_RTMPD_RTMP_DISPATCHER_H_
+#define _JUST_RTMPD_RTMP_DISPATCHER_H_
 
-#include <ppbox/dispatch/CustomDispatcher.h>
+#include <just/dispatch/CustomDispatcher.h>
 
 namespace util
 {
@@ -13,7 +13,7 @@ namespace util
     }
 }
 
-namespace ppbox
+namespace just
 {
     namespace rtmpd
     {
@@ -21,12 +21,12 @@ namespace ppbox
         class RtmpSink;
 
         class RtmpDispatcher 
-            : public ppbox::dispatch::CustomDispatcher
+            : public just::dispatch::CustomDispatcher
         {
         public:
 
             RtmpDispatcher(
-                ppbox::dispatch::DispatcherBase & dispatcher);
+                just::dispatch::DispatcherBase & dispatcher);
 
             ~RtmpDispatcher();
 
@@ -34,8 +34,8 @@ namespace ppbox
             void async_open_play(
                 util::protocol::RtmpSocket & socket, 
                 framework::string::Url & url, 
-                ppbox::dispatch::response_t const & seek_resp, 
-                ppbox::dispatch::response_t  const & resp);
+                just::dispatch::response_t const & seek_resp, 
+                just::dispatch::response_t  const & resp);
 
             bool teardown(
                 boost::system::error_code & ec);
@@ -43,16 +43,16 @@ namespace ppbox
         private:
             void handle_open(
                 util::protocol::RtmpSocket & socket, 
-                ppbox::dispatch::response_t const & seek_resp, 
-                ppbox::dispatch::response_t const & resp, 
+                just::dispatch::response_t const & seek_resp, 
+                just::dispatch::response_t const & resp, 
                 boost::system::error_code ec);
 
         private:
-            ppbox::avbase::MediaInfo media_info_;
+            just::avbase::MediaInfo media_info_;
             util::stream::Sink * sink_;
         };
 
     } // namespace rtmpd
-} // namespace ppbox
+} // namespace just
 
-#endif // _PPBOX_RTMPD_RTP_DISPATCHER_H_
+#endif // _JUST_RTMPD_RTP_DISPATCHER_H_

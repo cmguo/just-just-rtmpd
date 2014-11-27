@@ -1,18 +1,18 @@
 // RtmTransfer.cpp
 
-#include "ppbox/rtmpd/Common.h"
-#include "ppbox/rtmpd/RtmTransfer.h"
+#include "just/rtmpd/Common.h"
+#include "just/rtmpd/RtmTransfer.h"
 
-#include <ppbox/avformat/flv/FlvTagType.h>
-using namespace ppbox::avformat;
+#include <just/avformat/flv/FlvTagType.h>
+using namespace just::avformat;
 
-#include <ppbox/avbase/stream/SampleBuffers.h>
-#include <ppbox/avbase/stream/FormatBuffer.h>
-using namespace ppbox::avbase;
+#include <just/avbase/stream/SampleBuffers.h>
+#include <just/avbase/stream/FormatBuffer.h>
+using namespace just::avbase;
 
 #include <util/protocol/rtmp/RtmpMessageTraits.h>
 
-namespace ppbox
+namespace just
 {
     namespace rtmpd
     {
@@ -92,4 +92,4 @@ namespace ppbox
         }
 
     } // namespace rtmpd
-} // namespace ppbox
+} // namespace just

@@ -1,8 +1,8 @@
 // RtmpSession.cpp
 
-#include "ppbox/rtmpd/Common.h"
-#include "ppbox/rtmpd/RtmpDispatcher.h"
-#include "ppbox/rtmpd/RtmpSink.h"
+#include "just/rtmpd/Common.h"
+#include "just/rtmpd/RtmpDispatcher.h"
+#include "just/rtmpd/RtmpSink.h"
 
 #include <util/protocol/rtmp/RtmpError.h>
 #include <util/protocol/rtmp/RtmpMessage.h>
@@ -21,15 +21,15 @@ using namespace boost::system;
 
 #include <fstream>
 
-FRAMEWORK_LOGGER_DECLARE_MODULE_LEVEL("ppbox.rtmpd.RtmpDispatcher", framework::logger::Debug)
+FRAMEWORK_LOGGER_DECLARE_MODULE_LEVEL("just.rtmpd.RtmpDispatcher", framework::logger::Debug)
 
-namespace ppbox
+namespace just
 {
     namespace rtmpd
     {
         RtmpDispatcher::RtmpDispatcher(
-            ppbox::dispatch::DispatcherBase & dispatcher)
-            : ppbox::dispatch::CustomDispatcher(dispatcher)
+            just::dispatch::DispatcherBase & dispatcher)
+            : just::dispatch::CustomDispatcher(dispatcher)
             , sink_(NULL)
         {
         }
@@ -41,10 +41,10 @@ namespace ppbox
         void RtmpDispatcher::async_open_play(
             RtmpSocket & socket, 
             framework::string::Url & url, 
-            ppbox::dispatch::response_t const & seek_resp, 
-            ppbox::dispatch::response_t  const & resp)
+            just::dispatch::response_t const & seek_resp, 
+            just::dispatch::response_t  const & resp)
         {
-            url.param(ppbox::dispatch::param_format, "rtm");
+            url.param(just::dispatch::param_format, "rtm");
             CustomDispatcher::async_open(url, 
                 boost::bind(&RtmpDispatcher::handle_open, this, boost::ref(socket), seek_resp, resp, _1));
         }
@@ -60,14 +60,14 @@ namespace ppbox
 
         void RtmpDispatcher::handle_open(
             RtmpSocket & socket, 
-            ppbox::dispatch::response_t const & seek_resp, 
-            ppbox::dispatch::response_t const & resp, 
+            just::dispatch::response_t const & seek_resp, 
+            just::dispatch::response_t const & resp, 
             boost::system::error_code ec)
         {
             if (!ec) {
                 sink_ = new RtmpSink(socket);
                 if (CustomDispatcher::setup(-1, *sink_, ec)) {
-                    ppbox::dispatch::SeekRange range;
+                    just::dispatch::SeekRange range;
                     CustomDispatcher::async_play(range, seek_resp, resp);
                     return;
                 }
@@ -78,4 +78,4 @@ namespace ppbox
         }
 
     } // namespace rtmpd
-} // namespace ppbox
+} // namespace just

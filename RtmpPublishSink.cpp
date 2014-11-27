@@ -1,5 +1,5 @@
-#include "ppbox/rtmpd/Common.h"
-#include "ppbox/rtmpd/RtmpPublishSink.h"
+#include "just/rtmpd/Common.h"
+#include "just/rtmpd/RtmpPublishSink.h"
 
 #include <util/protocol/rtmp/RtmpError.h>
 #include <util/protocol/rtmp/RtmpSocket.hpp>
@@ -12,12 +12,12 @@ using namespace util::protocol;
 #include <framework/logger/StreamRecord.h>
 #include <framework/logger/StringRecord.h>
 
-namespace ppbox
+namespace just
 {
     namespace rtmpd
     {
 
-        FRAMEWORK_LOGGER_DECLARE_MODULE_LEVEL("ppbox.rtmpd.RtmpPublishSink", framework::logger::Debug);
+        FRAMEWORK_LOGGER_DECLARE_MODULE_LEVEL("just.rtmpd.RtmpPublishSink", framework::logger::Debug);
 
         RtmpPublishSink::RtmpPublishSink(
             boost::asio::io_service & io_svc)
@@ -212,4 +212,4 @@ namespace ppbox
         }
 
     } // namespace data
-} // namespace ppbox
+} // namespace just

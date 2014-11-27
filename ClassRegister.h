@@ -1,11 +1,11 @@
 // ClassRegister.h
 
-#ifndef _PPBOX_RTMPD_CLASS_REGISTER_H_
-#define _PPBOX_RTMPD_CLASS_REGISTER_H_
+#ifndef _JUST_RTMPD_CLASS_REGISTER_H_
+#define _JUST_RTMPD_CLASS_REGISTER_H_
 
 #include <util/tools/ClassRegister.h>
 
-#include "ppbox/rtmpd/RtmMuxer.h"
-#include "ppbox/rtmpd/RtmpPublishSink.h"
+#include "just/rtmpd/RtmMuxer.h"
+#include "just/rtmpd/RtmpPublishSink.h"
 
-#endif //_PPBOX_RTMPD_CLASS_REGISTER_H_
+#endif //_JUST_RTMPD_CLASS_REGISTER_H_

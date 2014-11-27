@@ -1,20 +1,20 @@
 // RtmTransfer.h
 
-#ifndef _PPBOX_MUX_RTM_RTM_TRANSFER_H_
-#define _PPBOX_MUX_RTM_RTM_TRANSFER_H_
+#ifndef _JUST_MUX_RTM_RTM_TRANSFER_H_
+#define _JUST_MUX_RTM_RTM_TRANSFER_H_
 
-#include "ppbox/mux/Transfer.h"
+#include "just/mux/Transfer.h"
 
 #include <util/protocol/rtmp/RtmpChunkHeader.h>
 #include <util/protocol/rtmp/RtmpMessage.h>
 
-namespace ppbox
+namespace just
 {
     namespace rtmpd
     {
 
         class RtmTransfer
-            : public ppbox::mux::Transfer
+            : public just::mux::Transfer
         {
         public:
             RtmTransfer();
@@ -23,7 +23,7 @@ namespace ppbox
 
         public:
             virtual void transfer(
-                ppbox::mux::Sample & sample);
+                just::mux::Sample & sample);
 
             virtual void on_seek(
                 boost::uint64_t time);
@@ -36,6 +36,6 @@ namespace ppbox
         };
 
     } // namespace rtmpd
-} // namespace ppbox
+} // namespace just
 
-#endif // _PPBOX_MUX_RTM_RTM_TRANSFER_H_
+#endif // _JUST_MUX_RTM_RTM_TRANSFER_H_

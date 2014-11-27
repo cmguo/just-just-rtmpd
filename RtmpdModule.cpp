@@ -1,26 +1,26 @@
 // RtmpdModule.cpp
 
-#include "ppbox/rtmpd/Common.h"
-#include "ppbox/rtmpd/RtmpdModule.h"
-#include "ppbox/rtmpd/RtmpDispatcher.h"
-#include "ppbox/rtmpd/RtmpSession.h"
-#include "ppbox/rtmpd/ClassRegister.h"
+#include "just/rtmpd/Common.h"
+#include "just/rtmpd/RtmpdModule.h"
+#include "just/rtmpd/RtmpDispatcher.h"
+#include "just/rtmpd/RtmpSession.h"
+#include "just/rtmpd/ClassRegister.h"
 
-#include <ppbox/dispatch/DispatchModule.h>
+#include <just/dispatch/DispatchModule.h>
 
 #include <util/protocol/rtmp/RtmpSocket.hpp>
 
-namespace ppbox
+namespace just
 {
     namespace rtmpd
     {
 
         RtmpdModule::RtmpdModule(
             util::daemon::Daemon & daemon)
-            : ppbox::common::CommonModuleBase<RtmpdModule>(daemon, "RtmpdModule")
+            : just::common::CommonModuleBase<RtmpdModule>(daemon, "RtmpdModule")
             , framework::network::ServerManager<RtmpSession, RtmpdModule>(daemon.io_svc())
             , addr_("0.0.0.0:1935+")
-            , dispatch_module_(util::daemon::use_module<ppbox::dispatch::DispatchModule>(get_daemon()))
+            , dispatch_module_(util::daemon::use_module<just::dispatch::DispatchModule>(get_daemon()))
         {
             daemon.config().register_module("RtmpdModule")
                 << CONFIG_PARAM_NAME_RDWR("addr",addr_ );
@@ -58,4 +58,4 @@ namespace ppbox
         }
 
     } // namespace rtmpd
-} // namespace ppbox
+} // namespace just
